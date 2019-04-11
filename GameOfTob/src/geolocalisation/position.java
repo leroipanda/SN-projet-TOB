@@ -43,4 +43,7 @@ public class position {
 	public String ToStringSimplifier(){
 		return this.getLatitude()+","+this.getLongitude() ;
 	}
+	public String toStringRoute(){
+		return "'"+this.getLatitude()+","+this.getLongitude()+"'" ;
+	}
 }

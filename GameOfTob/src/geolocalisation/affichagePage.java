@@ -102,13 +102,21 @@ public class affichagePage implements APIGoogleMaps {
 	//ajout des waypoint a faire
 	public String tracerRoute(position depart,position arrive) {
 		String lecode ;
-		lecode = "var directionsService = new google.maps.DirectionsService;var directionsDisplay = new google.maps.DirectionsRenderer;directionsDisplay.setMap(map);calculateAndDisplayRoute(directionsService, directionsDisplay);}function calculateAndDisplayRoute(directionsService, directionsDisplay) {var waypts = [];var checkboxArray = document.getElementById('waypoints');for (var i = 0; i < checkboxArray.length; i++) {if(checkboxArray.options[i].selected) {waypts.push({location: checkboxArray[i].value,stopover: true});}}directionsService.route("
+		/* lecode = "var directionsService = new google.maps.DirectionsService;var directionsDisplay = new google.maps.DirectionsRenderer;directionsDisplay.setMap(map);calculateAndDisplayRoute(directionsService, directionsDisplay);}function calculateAndDisplayRoute(directionsService, directionsDisplay) {var waypts = [];var checkboxArray = document.getElementById('waypoints');for (var i = 0; i < checkboxArray.length; i++) {if(checkboxArray.options[i].selected) {waypts.push({location: checkboxArray[i].value,stopover: true});}}directionsService.route("
 			+ "{origin:"+depart.toString() +","
 		    + "destination: "+arrive.toString() +","
 		    +"waypoints: null,"
 		    +"optimizeWaypoints: true,"
 		    +"travelMode: 'DRIVING'"
 		+"}, function(response, status) {if (status === 'OK') {directionsDisplay.setDirections(response);var route = response.routes[0];var summaryPanel = document.getElementById('directions-panel');summaryPanel.innerHTML = '';for (var i = 0; i < route.legs.length; i++) {var routeSegment = i + 1;summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +'</b><br>';summaryPanel.innerHTML += route.legs[i].start_address + ' to ';summaryPanel.innerHTML += route.legs[i].end_address + '<br>';summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';}} else {window.alert('Directions request failed due to ' + status);}});";
+	*/
+		
+		lecode = "var directionsService = new google.maps.DirectionsService;var directionsDisplay = new google.maps.DirectionsRenderer;directionsDisplay.setMap(map);"
+		 +" displayRoute( "+depart.toStringRoute() +","+ arrive.toStringRoute()+", "
+		  +"directionsService,directionsDisplay);}function displayRoute(origin, destination, service, display) {service.route({origin: origin,destination: destination,"
+		  // +" waypoints: [{location: 'Nantes, FR'}],"
+		   +" travelMode: 'DRIVING',avoidTolls: false}, function(response, status) {if (status === 'OK') {display.setDirections(response);} else {alert('Could not display directions due to: ' + status);}});";
+
 	return lecode;
 	}
 	
