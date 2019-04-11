@@ -74,9 +74,9 @@ public class matriceDistance implements APIGoogleMaps {
 		//on le telecharge 
 		
 		String nomFichier = "donneMatrice.json";
-		//ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-		//FileOutputStream fos = new FileOutputStream(nomFichier);
-		//fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+		ReadableByteChannel rbc = Channels.newChannel(website.openStream());
+		FileOutputStream fos = new FileOutputStream(nomFichier);
+		fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
 		
 		//on extrait les infos du fichier 
 		

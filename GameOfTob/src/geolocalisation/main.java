@@ -18,15 +18,16 @@ public class main {
 		position Metz = new position(49.0713 , 6.1040);
 		System.out.println(Metz.toString());
 		test.creationPageHTML(Metz,cams,entrs,prios);
-		matriceDistance matrice = new matriceDistance(cams,entrs);
+		/* matriceDistance matrice = new matriceDistance(cams,entrs);
 		try{trajet[] dispo = matrice.getTrajetsCalcules();
 		double testdistance = matrice.distanceTrajet(dispo[1]);
 		System.out.println(testdistance);
 		//test.creationPageHTML(Metz);
 		}
+		
 		catch(Exception e){
 			
-		}
+		}*/
 	}
 
 }
