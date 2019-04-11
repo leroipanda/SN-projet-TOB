@@ -1,4 +1,4 @@
-package Truckz;
+package geolocalisation;
 
 
 //il faut commenter ce code
@@ -36,6 +36,8 @@ public class position {
 	}
 	@Override
 	public String toString() {
-		return Double.toString(Latitude)+","+Double.toString(Longitude);
+		String texte ;
+		 texte = "{lat: "+this.getLatitude()+", lng: "+this.Longitude+"}";
+		return texte;
 	}
 }

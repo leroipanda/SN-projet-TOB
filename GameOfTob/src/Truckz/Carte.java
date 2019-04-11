@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 
+import geolocalisation.position;
+
 
 public class Carte {
 	private String APIKEY ; // " AIzaSyBNQDcDilCvR-x3Cp50p56CtH9Z1fxWLTQ"

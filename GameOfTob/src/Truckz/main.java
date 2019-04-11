@@ -1,5 +1,7 @@
 package Truckz;
 
+import geolocalisation.position;
+
 public class main {
 
 	public main() {
