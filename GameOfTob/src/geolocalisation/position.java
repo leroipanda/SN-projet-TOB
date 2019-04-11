@@ -40,4 +40,7 @@ public class position {
 		 texte = "{lat: "+this.getLatitude()+", lng: "+this.Longitude+"}";
 		return texte;
 	}
+	public String ToStringSimplifier(){
+		return this.getLatitude()+","+this.getLongitude() ;
+	}
 }

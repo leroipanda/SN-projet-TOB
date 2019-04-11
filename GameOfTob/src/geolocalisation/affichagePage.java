@@ -4,8 +4,8 @@ import java.io.FileWriter;
 import java.io.File;
 
 
-public class affichagePage {
-	static String ClefAPI = "AIzaSyBNQDcDilCvR-x3Cp50p56CtH9Z1fxWLTQ";
+public class affichagePage implements APIGoogleMaps {
+	
 	static String adresseIcone[] =  {"https://zupimages.net/up/19/15/c1dk.png","https://zupimages.net/up/19/15/wdcq.png","https://zupimages.net/up/19/15/uk12.png"};
 	public affichagePage() {
 		
@@ -14,11 +14,11 @@ public class affichagePage {
 	//fonction qui ecrit juste dans un fichier
 	public void CreationFichier (String nom,String Contenu) {
 		try{
-			File ff=new File(nom); // définir l'arborescence
+			File ff=new File(nom); // dï¿½finir l'arborescence
 			ff.createNewFile();
 			FileWriter ffw=new FileWriter(ff);
 			ffw.write(Contenu);
-			ffw.close(); // fermer le fichier à la fin des traitements
+			ffw.close(); // fermer le fichier ï¿½ la fin des traitements
 			} catch (Exception e) {}
 			}
 	//fonction qui realise un saut de ligne : marhe pas ....			
