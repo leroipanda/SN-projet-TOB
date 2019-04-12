@@ -3,9 +3,9 @@ package Truckz;
 public enum EtatColis {
 
 	  //Objets directement construits
-	  P ("Pas encore livré."),
+	  P ("Pas encore envoyÃ©."),
 	  C("En cours de livraison."),
-	  L ("Livré.");
+	  L ("LivrÃ©.");
 
 	  private String etat = "";
 	   
