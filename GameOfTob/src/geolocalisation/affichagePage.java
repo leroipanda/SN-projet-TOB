@@ -31,9 +31,9 @@ public class affichagePage implements APIGoogleMaps {
 		String page = new String();
 		//creation de la page HTML de la carte
 		page=" <!DOCTYPE html><html><head><style>"
-				+ "#map {height: 400px;  /* The height is 400 pixels "
+				+ "#map {height: 1000px;  /* The height is 400 pixels "
 				+ "*/width: 100%;  /* The width is the width of the web page */}"
-				+ "</style></head><body><h3>My Google Maps Demo</h3><!--The div element for the map --><div id="+"map"+"></div><script>function initMap() {"
+				+ "</style></head><body><h3>Truckz</h3><!--The div element for the map --><div id="+"map"+"></div><script>function initMap() {"
 				+ "var centre = "+centre.toString()+";"
 				+""
 				+ "var map = new google.maps.Map(document.getElementById('map'), "
@@ -73,8 +73,10 @@ public class affichagePage implements APIGoogleMaps {
 						}
 					
 					
-					page = page+ tracerRoute(camions[0],camions[1]);
-					page = page + "}</script><script async defer src="+"https://maps.googleapis.com/maps/api/js?key="
+					page = page+ tracerRoute(entrepots[0],entrepots[1],prios);
+					page = page + "function displayRoute(origin, destination,way, service, display) {service.route({origin: origin,destination: destination,waypoints: way ,optimizeWaypoints: false,"
+                      + "travelMode: 'DRIVING',avoidTolls: false}, function(response, status) {if (status === 'OK') {display.setDirections(response);} else {alert('Could not display directions due to: ' + status);}});}";
+					page = page + "</script><script async defer src="+"https://maps.googleapis.com/maps/api/js?key="
 					+ ClefAPI
 					+ "&callback=initMap"+"></script></body></html>";
 			
@@ -100,15 +102,27 @@ public class affichagePage implements APIGoogleMaps {
 		
 	}
 	//ajout des waypoint a faire
-	public String tracerRoute(position depart,position arrive) {
+	public String tracerRoute(position depart,position arrive,position[] positionWaypoints) {
 		String lecode ;
-		lecode = "var directionsService = new google.maps.DirectionsService;var directionsDisplay = new google.maps.DirectionsRenderer;directionsDisplay.setMap(map);calculateAndDisplayRoute(directionsService, directionsDisplay);}function calculateAndDisplayRoute(directionsService, directionsDisplay) {var waypts = [];var checkboxArray = document.getElementById('waypoints');for (var i = 0; i < checkboxArray.length; i++) {if(checkboxArray.options[i].selected) {waypts.push({location: checkboxArray[i].value,stopover: true});}}directionsService.route("
+		/* lecode = "var directionsService = new google.maps.DirectionsService;var directionsDisplay = new google.maps.DirectionsRenderer;directionsDisplay.setMap(map);calculateAndDisplayRoute(directionsService, directionsDisplay);}function calculateAndDisplayRoute(directionsService, directionsDisplay) {var waypts = [];var checkboxArray = document.getElementById('waypoints');for (var i = 0; i < checkboxArray.length; i++) {if(checkboxArray.options[i].selected) {waypts.push({location: checkboxArray[i].value,stopover: true});}}directionsService.route("
 			+ "{origin:"+depart.toString() +","
 		    + "destination: "+arrive.toString() +","
 		    +"waypoints: null,"
 		    +"optimizeWaypoints: true,"
 		    +"travelMode: 'DRIVING'"
 		+"}, function(response, status) {if (status === 'OK') {directionsDisplay.setDirections(response);var route = response.routes[0];var summaryPanel = document.getElementById('directions-panel');summaryPanel.innerHTML = '';for (var i = 0; i < route.legs.length; i++) {var routeSegment = i + 1;summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +'</b><br>';summaryPanel.innerHTML += route.legs[i].start_address + ' to ';summaryPanel.innerHTML += route.legs[i].end_address + '<br>';summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';}} else {window.alert('Directions request failed due to ' + status);}});";
+	*/
+		
+		lecode = "var directionsService = new google.maps.DirectionsService;var directionsDisplay = new google.maps.DirectionsRenderer;directionsDisplay.setMap(map);var way =[ ";
+		for(int i = 0 ; i< positionWaypoints.length;i++ ){
+			//on ajoute les waypoints 
+			lecode = lecode +"{location: " +positionWaypoints[i].toStringRoute()+"}," ;
+			
+			
+		}
+		 lecode = lecode +"]; displayRoute( "+depart.toStringRoute() +","+ arrive.toStringRoute()+",way, "
+		  +"directionsService,directionsDisplay);}";
+
 	return lecode;
 	}
 	

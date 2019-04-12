@@ -90,4 +90,13 @@ public class trajet {
 		trajet inverse = new trajet(this.arrivee , this.depart);
 		return inverse ;
 	}
+	
+	/**fonction qui indique si une position fait partie d'un trajet . 
+	 * @param endroit que l'on souhaite tester
+	 * @return boolean
+	 */
+	public Boolean PointDuTrajet(position endroit){
+		Boolean passage =( endroit.equal(arrivee)|| endroit.equal(depart)  || waypoints.contains(endroit) ) ;
+		return passage;
+	}
 }
