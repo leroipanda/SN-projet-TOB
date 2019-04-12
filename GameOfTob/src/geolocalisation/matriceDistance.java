@@ -11,7 +11,7 @@ import java.nio.channels.ReadableByteChannel;
 
 /**
  * @author nfrederi
- * la classe matriceDistance permet d'obtennir une matrice comportant les distances entre plusieurs emplacements de depart et d'arrive
+ * la classe matriceDistance permet d'obtennir une matrice comportant les distances entre plusieurs emplacement de depart et d'arrive
  * 
  * depart = [A B C ]
  * arrivee = [ D E ]
@@ -74,9 +74,9 @@ public class matriceDistance implements APIGoogleMaps {
 		//on le telecharge 
 		
 		String nomFichier = "donneMatrice.json";
-		ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-		FileOutputStream fos = new FileOutputStream(nomFichier);
-		fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+		//ReadableByteChannel rbc = Channels.newChannel(website.openStream());
+		//FileOutputStream fos = new FileOutputStream(nomFichier);
+		//fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
 		
 		//on extrait les infos du fichier 
 		

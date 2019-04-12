@@ -7,32 +7,32 @@ import java.util.*;
 public class Camion {
 	
 	protected String matricule;
-	protected Chauffeur chauffeur;
+	protected String chauffeur;
 	protected double poidsMax;
 	protected Statut statut;
-	protected Entrepot depart;
-	protected Entrepot arrivee;
+	protected String depart;
+	protected String arrivee;
 	protected ArrayList<Colis> chargement;
 	
 	public Camion(String matricule, double poidsmax){
 		this.matricule=matricule;
 		this.poidsMax=poidsmax;
 		this.statut=Statut.I;
-		this.depart=null;
-		this.arrivee=null;
-		this.chauffeur=null;	
+		this.depart="Inconnu";
+		this.arrivee="Inconnu";
+		this.chauffeur="Inconnu";	
 		this.chargement=null;
 	}
 	
-	public void setChauffeur(Chauffeur nouveau){
+	public void setChauffeur(String nouveau){
 		this.chauffeur = nouveau;
 	}
 	
-	public void setDepart(Entrepot nouveau){
+	public void setDepart(String nouveau){
 		this.depart = nouveau;
 	}
 	
-	public void setArrivee(Entrepot nouveau){
+	public void setArrivee(String nouveau){
 		this.arrivee = nouveau;
 	}
 	
@@ -40,16 +40,12 @@ public class Camion {
 		this.statut = nouveau;
 	}
 	
-	public ArrayList<Colis> getChargement() {
-		return this.chargement;
-	}
-	
 
 	public void remplir(Entrepot entrepotD, Entrepot entrepotA){
 		int poidsCharge = 0;
 		ArrayList<Colis> colisBonneDestination = new ArrayList<Colis>();
 		for (Colis colis : entrepotD.getStock()){
-			if (colis.getDestination().getNom().equals(entrepotA.getNom())){
+			if (colis.getDestination()==entrepotA.getNom()){
 				colisBonneDestination.add(colis);
 			}
 		}
@@ -72,10 +68,6 @@ public class Camion {
 			colis.setEtat(EtatColis.L);
 			chargement.remove(colis);
 		}
-	}
-
-	public Entrepot getEntrepotDestination() {
-		return this.arrivee;
 	}
 
 }

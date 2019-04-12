@@ -10,7 +10,7 @@ public class Colis {
 
 	protected String id;
 	protected int priorite;
-	protected Entrepot destination;
+	protected String destination;
 	protected Categorie categorie;
 	protected EtatColis etat;
 	protected double poids;
@@ -23,7 +23,7 @@ public class Colis {
 	 * @param poids = le poids du colis en kilogrammes
 	 * @param destination = le nom de l'entrepot de destination
 	 */
-	public Colis(String id, boolean prioritaire, Categorie categorie, double poids, Entrepot destination) {
+	public Colis(String id, boolean prioritaire, Categorie categorie, double poids, String destination) {
 		this.id = id;
 		this.destination = destination;
 		this.categorie = categorie;
@@ -47,7 +47,7 @@ public class Colis {
 	/**
 	 * retourne la destination du colis
 	 */
-	public Entrepot getDestination() {
+	public String getDestination() {
 		return this.destination;
 	}
 	
