@@ -19,6 +19,11 @@ public class position {
 		this.Latitude = latitude ;
 		this.Longitude = longitude;
 	}
+	public position(position emplacement) {
+		this.Latitude = emplacement.getLatitude();
+		this.Longitude = emplacement.getLongitude();
+	  
+	}
 	/**retourne la latitude du point
 	 * @return
 	 */
