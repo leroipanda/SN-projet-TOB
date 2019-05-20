@@ -1,0 +1,7 @@
+
+--Cette ligne, et les suivantes ci-dessous, seront ignorées--
+
+A    src/geolocalisation
+A    src/geolocalisation/affichagePage.java
+A    src/geolocalisation/main.java
+A    src/geolocalisation/position.java
